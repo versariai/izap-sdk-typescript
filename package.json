@@ -1,0 +1,62 @@
+{
+  "name": "@izapai/sdk",
+  "version": "0.3.0",
+  "description": "TypeScript SDK for the iZap REST API: WhatsApp business messaging, templates, chats and webhooks.",
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/versariai/izap-sdk-typescript.git"
+  },
+  "homepage": "https://devs.izap.ai",
+  "bugs": {
+    "url": "https://github.com/versariai/izap-sdk-typescript/issues",
+    "email": "support@izap.ai"
+  },
+  "keywords": [
+    "izap",
+    "whatsapp",
+    "sdk",
+    "api",
+    "webhooks"
+  ],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "generate": "openapi-ts",
+    "sync:schema": "node scripts/sync-schema.mjs",
+    "check:generated": "node scripts/check-generated.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test": "npm run typecheck && vitest run",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepublishOnly": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "@hey-api/openapi-ts": "0.99.0",
+    "@types/node": "20.19.43",
+    "prettier": "3.9.6",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

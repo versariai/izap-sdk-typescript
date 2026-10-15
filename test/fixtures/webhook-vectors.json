@@ -1,0 +1,10 @@
+{
+  "_source": "Signed by the iZap backend itself: aizap.services.webhook.webhook_delivery_service.serialize_payload() for `body`, sign(secret, timestamp, body) for `signature`, and sign_v2(secret, id, timestamp, body) for `signatureV2`.",
+  "secret": "izap_whsec_test_0123456789abcdef",
+  "timestamp": "1789207200",
+  "id": "3c5d7e9f-0000-4000-8000-000000000004",
+  "event": "message.received",
+  "body": "{\"business_id\":\"8f0b9e2a-0000-4000-8000-000000000001\",\"conversation_id\":null,\"event\":\"message.received\",\"message\":{\"chat_id\":\"b91d4a5e-0000-4000-8000-000000000003\",\"created_at\":\"2026-09-12T10:00:00.123456+00:00\",\"from\":\"+5511999990000\",\"id\":\"8a2e1c40-0000-4000-8000-000000000002\",\"sender_type\":\"consumer\",\"text\":\"Olá! Qual o horário de funcionamento? 🕘\"}}",
+  "signature": "v1=1f93fbf0d14c13c7537d07335c8d212a9bf2ccd7262d5071d95fd73bb652acf9",
+  "signatureV2": "v2=7c695b7c1dc4c8cfed81269c7f92b36094ae5fa5cbc6ced0c3f99f616d730c37"
+}
