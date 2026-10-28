@@ -134,6 +134,91 @@ describe("createClient", () => {
     ).toBeUndefined();
   });
 
+  it("includes the recent public contacts, stickers, template conversation and transmission fields", async () => {
+    const contact = {
+      id: "c-1",
+      name: "Ana",
+      phone_number: "+5511999990000",
+      email: null,
+      tags: [],
+      notes: null,
+      created_at: "2026-09-14T12:00:00Z",
+      last_interaction_at: null,
+      conversation_id: null,
+      ai_paused: false,
+      opted_out: false,
+    };
+    const { fetch, requests } = mockFetch(
+      json(200, { items: [contact], total: 1, page: 1, page_size: 20 }),
+      json(200, {
+        stickers: [],
+        total: 0,
+        limit: 20,
+        offset: 0,
+        has_next: false,
+      }),
+      json(201, {
+        chat_id: CHAT_ID,
+        consumer_id: "c-1",
+        user_message: { id: "m-1", client_message_id: "client-1" },
+      }),
+      json(200, {
+        transmission_id: "tr-1",
+        business_id: BUSINESS_ID,
+        name: "Windowed follow-up",
+        transmission_type: "whatsapp_freeform",
+        status: "draft",
+        template_name: null,
+        total_recipients: 1,
+        valid_count: 1,
+        invalid_count: 0,
+        duplicate_count: 0,
+        opted_out_count: 0,
+        outside_window_count: 0,
+        scheduled_at: null,
+        warnings: [],
+        warning_details: [
+          {
+            code: "variable_unmatched",
+            message: "Missing {{1}}",
+            variable: "1",
+          },
+        ],
+        column_mapping: {},
+      }),
+    );
+    const izap = createClient({ token: TOKEN, businessId: BUSINESS_ID, fetch });
+
+    await izap.listContacts({ query: { search: "Ana", page_size: 20 } });
+    await izap.listBusinessLibraryStickers();
+    await izap.startTemplateConversation({
+      body: {
+        template_id: "tpl-1",
+        phone: "+5511999990000",
+        variables: { "1": "Ana" },
+      },
+    });
+    await izap.previewTransmission({
+      body: {
+        name: "Windowed follow-up",
+        recipients: [{ phone_number: "+5511999990000" }],
+        transmission_type: "whatsapp_freeform",
+        message_text: "Olá!",
+        header_media_document_id: "menu.pdf",
+        header_media_filename: "menu.pdf",
+      },
+    });
+
+    expect(
+      requests.map((request) => `${request.method} ${request.url}`),
+    ).toEqual([
+      "GET https://api.izap.ai/api/v1/contacts?search=Ana&page_size=20",
+      "GET https://api.izap.ai/api/v1/businesses/library/stickers",
+      "POST https://api.izap.ai/api/v1/chats/template-conversations",
+      "POST https://api.izap.ai/api/v1/transmissions/preview",
+    ]);
+  });
+
   it("rejects a missing token and invalid retry/timeout settings", () => {
     expect(() => createClient({ token: "" })).toThrow(TypeError);
     expect(() => createClient({ token: TOKEN, maxRetries: -1 })).toThrow(

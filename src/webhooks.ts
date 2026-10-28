@@ -30,8 +30,43 @@ export interface MessageReceivedEvent {
   };
 }
 
+/** The `conversation.created` event body: a customer's first conversation with the business. */
+export interface ConversationCreatedEvent {
+  event: "conversation.created";
+  business_id: string;
+  conversation_id: string;
+  chat: {
+    id: string;
+    chatbot_id: string | null;
+    /** ISO 8601 timestamp. */
+    created_at: string;
+  };
+  contact: {
+    id: string | null;
+    phone: string | null;
+  };
+}
+
+/** The `message.status_updated` event body: a delivery verdict for a message the business sent. */
+export interface MessageStatusUpdatedEvent {
+  event: "message.status_updated";
+  business_id: string;
+  conversation_id: string | null;
+  message: {
+    id: string;
+    chat_id: string | null;
+    /** e.g. `sent`, `delivered`, `read`, `failed`. */
+    status: string | null;
+    error_code: number | null;
+    error_reason: string | null;
+    /** ISO 8601 timestamp. */
+    updated_at: string;
+  };
+}
+
 /** Every event in the iZap webhook catalog. */
-export type IzapWebhookPayload = MessageReceivedEvent;
+export type IzapWebhookPayload =
+  MessageReceivedEvent | ConversationCreatedEvent | MessageStatusUpdatedEvent;
 
 /** A `Headers` instance or a plain object such as Node's `IncomingHttpHeaders`. */
 export type WebhookHeaders =

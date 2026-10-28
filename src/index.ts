@@ -15,8 +15,10 @@ export * as webhooks from "./webhooks.js";
 export {
   WEBHOOK_HEADERS,
   WebhookVerificationError,
+  type ConversationCreatedEvent,
   type IzapWebhookPayload,
   type MessageReceivedEvent,
+  type MessageStatusUpdatedEvent,
   type SignWebhookOptions,
   type SignWebhookV2Options,
   type VerifyWebhookOptions,

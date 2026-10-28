@@ -77,6 +77,9 @@ describe("webhooks.verify", () => {
     expect(event.id).toBe(vector.id);
     expect(event.event).toBe("message.received");
     expect(event.timestamp).toBe(deliveredAt);
+    if (event.data.event !== "message.received") {
+      throw new Error(`unexpected event ${event.data.event}`);
+    }
     expect(event.data.message.text).toBe(
       "Olá! Qual o horário de funcionamento? 🕘",
     );

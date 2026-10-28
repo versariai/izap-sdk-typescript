@@ -148,6 +148,53 @@
         "title": "Body_upload_business_library_image_for_current_business_api_v1_businesses_library_images_post",
         "type": "object"
       },
+      "Body_upload_business_library_sticker_for_current_business_api_v1_businesses_library_stickers_post": {
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "file": {
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "type": "string"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_business_library_sticker_for_current_business_api_v1_businesses_library_stickers_post",
+        "type": "object"
+      },
       "Body_upload_files_api_v1_chats__chat_id__upload_post": {
         "properties": {
           "files": {
@@ -174,6 +221,7 @@
           "owner_contact": {
             "anyOf": [
               {
+                "maxLength": 40,
                 "type": "string"
               },
               {
@@ -181,6 +229,19 @@
               }
             ],
             "title": "Owner Contact"
+          },
+          "owner_contact_region": {
+            "anyOf": [
+              {
+                "maxLength": 2,
+                "minLength": 2,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Owner Contact Region"
           },
           "owner_name": {
             "anyOf": [
@@ -537,6 +598,43 @@
           "created"
         ],
         "title": "BusinessLibraryImageOut",
+        "type": "object"
+      },
+      "BusinessLibraryStickerListResponse": {
+        "description": "Paginated list of WhatsApp stickers in the library (newest first).",
+        "properties": {
+          "has_next": {
+            "title": "Has Next",
+            "type": "boolean"
+          },
+          "limit": {
+            "title": "Limit",
+            "type": "integer"
+          },
+          "offset": {
+            "title": "Offset",
+            "type": "integer"
+          },
+          "stickers": {
+            "items": {
+              "$ref": "#/components/schemas/BusinessLibraryImageOut"
+            },
+            "title": "Stickers",
+            "type": "array"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "stickers",
+          "total",
+          "limit",
+          "offset",
+          "has_next"
+        ],
+        "title": "BusinessLibraryStickerListResponse",
         "type": "object"
       },
       "BusinessMenuOut": {
@@ -934,6 +1032,18 @@
       "ChatMessageSummaryOut": {
         "description": "A chat message as embedded in the send-message responses below.",
         "properties": {
+          "client_message_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Message Id"
+          },
           "content": {
             "anyOf": [
               {
@@ -1492,6 +1602,11 @@
             "title": "Effective Locale",
             "type": "string"
           },
+          "hold_ai_after_manual_reply": {
+            "default": false,
+            "title": "Hold Ai After Manual Reply",
+            "type": "boolean"
+          },
           "id": {
             "format": "uuid",
             "title": "Id",
@@ -1662,6 +1777,222 @@
         "title": "ChatbotWhatsAppNumberOut",
         "type": "object"
       },
+      "ContactConversationOut": {
+        "properties": {
+          "chatbot_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chatbot Id"
+          },
+          "chatbot_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Chatbot Name"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_message_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Message At"
+          }
+        },
+        "required": [
+          "id",
+          "chatbot_id",
+          "chatbot_name",
+          "last_message_at"
+        ],
+        "title": "ContactConversationOut",
+        "type": "object"
+      },
+      "ContactCreateIn": {
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "format": "email",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "name": {
+            "maxLength": 50,
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "phone_number": {
+            "maxLength": 40,
+            "title": "Phone Number",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "phone_number"
+        ],
+        "title": "ContactCreateIn",
+        "type": "object"
+      },
+      "ContactDetailOut": {
+        "properties": {
+          "ai_paused": {
+            "title": "Ai Paused",
+            "type": "boolean"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "conversations": {
+            "items": {
+              "$ref": "#/components/schemas/ContactConversationOut"
+            },
+            "title": "Conversations",
+            "type": "array"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_interaction_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Interaction At"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "opted_out": {
+            "title": "Opted Out",
+            "type": "boolean"
+          },
+          "phone_number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone Number"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "phone_number",
+          "email",
+          "tags",
+          "notes",
+          "created_at",
+          "last_interaction_at",
+          "conversation_id",
+          "ai_paused",
+          "opted_out",
+          "conversations"
+        ],
+        "title": "ContactDetailOut",
+        "type": "object"
+      },
       "ContactFilterEntriesAddedOut": {
         "properties": {
           "added": {
@@ -1828,6 +2159,306 @@
         "title": "ContactFilterOut",
         "type": "object"
       },
+      "ContactImportIn": {
+        "properties": {
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/ContactImportRowIn"
+            },
+            "title": "Rows",
+            "type": "array"
+          }
+        },
+        "required": [
+          "rows"
+        ],
+        "title": "ContactImportIn",
+        "type": "object"
+      },
+      "ContactImportOut": {
+        "properties": {
+          "created": {
+            "title": "Created",
+            "type": "integer"
+          },
+          "skipped": {
+            "items": {
+              "$ref": "#/components/schemas/ContactImportSkippedOut"
+            },
+            "title": "Skipped",
+            "type": "array"
+          },
+          "updated": {
+            "title": "Updated",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "created",
+          "updated",
+          "skipped"
+        ],
+        "title": "ContactImportOut",
+        "type": "object"
+      },
+      "ContactImportRowIn": {
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "phone_number": {
+            "title": "Phone Number",
+            "type": "string"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "required": [
+          "phone_number"
+        ],
+        "title": "ContactImportRowIn",
+        "type": "object"
+      },
+      "ContactImportSkippedOut": {
+        "properties": {
+          "reason": {
+            "enum": [
+              "invalid_phone",
+              "duplicate_in_file",
+              "invalid_email"
+            ],
+            "title": "Reason",
+            "type": "string"
+          },
+          "row": {
+            "title": "Row",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "row",
+          "reason"
+        ],
+        "title": "ContactImportSkippedOut",
+        "type": "object"
+      },
+      "ContactListOut": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ContactOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "page": {
+            "title": "Page",
+            "type": "integer"
+          },
+          "page_size": {
+            "title": "Page Size",
+            "type": "integer"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "page",
+          "page_size"
+        ],
+        "title": "ContactListOut",
+        "type": "object"
+      },
+      "ContactOut": {
+        "properties": {
+          "ai_paused": {
+            "title": "Ai Paused",
+            "type": "boolean"
+          },
+          "conversation_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Conversation Id"
+          },
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "id": {
+            "format": "uuid",
+            "title": "Id",
+            "type": "string"
+          },
+          "last_interaction_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last Interaction At"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "opted_out": {
+            "title": "Opted Out",
+            "type": "boolean"
+          },
+          "phone_number": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone Number"
+          },
+          "tags": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Tags",
+            "type": "array"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "phone_number",
+          "email",
+          "tags",
+          "notes",
+          "created_at",
+          "last_interaction_at",
+          "conversation_id",
+          "ai_paused",
+          "opted_out"
+        ],
+        "title": "ContactOut",
+        "type": "object"
+      },
+      "ContactUpdateIn": {
+        "description": "Only the fields sent are changed; the phone number is fixed once created.",
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "format": "email",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "notes": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Notes"
+          },
+          "tags": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Tags"
+          }
+        },
+        "title": "ContactUpdateIn",
+        "type": "object"
+      },
       "CreateChatIn": {
         "properties": {
           "chatbot_id": {
@@ -1886,6 +2517,18 @@
               }
             ],
             "title": "Attachments"
+          },
+          "client_message_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Client Message Id"
           },
           "content": {
             "maxLength": 4096,
@@ -1983,6 +2626,56 @@
             ],
             "title": "Business Id"
           },
+          "header_media_document_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "UUID or filename of a document or video in the business's media library to use as the template's DOCUMENT or VIDEO header. Mutually exclusive with the other header media sources.",
+            "title": "Header Media Document Id"
+          },
+          "header_media_filename": {
+            "anyOf": [
+              {
+                "maxLength": 240,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Name recipients see for a DOCUMENT header. Ignored for image and video headers.",
+            "title": "Header Media Filename"
+          },
+          "header_media_image_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "UUID or filename of an image in the business's media library to use as the template's IMAGE header. Mutually exclusive with the other header media sources.",
+            "title": "Header Media Image Id"
+          },
+          "header_media_url": {
+            "anyOf": [
+              {
+                "maxLength": 2048,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Public https:// URL of the file for the template's media header (an image for an IMAGE header, a PDF for a DOCUMENT header, an MP4 for a VIDEO header). Required when the template was approved with a media header; the same file goes to every recipient. Mutually exclusive with the library header fields.",
+            "title": "Header Media Url"
+          },
           "max_messages_per_minute": {
             "default": 60,
             "description": "Sending pace cap. Must be between 1 and 200 messages per minute.",
@@ -1990,6 +2683,19 @@
             "minimum": 1,
             "title": "Max Messages Per Minute",
             "type": "integer"
+          },
+          "message_text": {
+            "anyOf": [
+              {
+                "maxLength": 4096,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "Text to send. Required for 'whatsapp_freeform', which only reaches contacts inside the WhatsApp customer-service window; others are skipped.",
+            "title": "Message Text"
           },
           "name": {
             "description": "Human label for the transmission.",
@@ -2041,24 +2747,29 @@
             "type": "string"
           },
           "template_name": {
-            "description": "Name of the pre-approved WhatsApp Cloud API template to send.",
+            "default": "freeform",
+            "description": "Name of the pre-approved WhatsApp Cloud API template to send. Required for 'whatsapp_template'; not accepted for 'whatsapp_freeform', which stores a fixed default.",
             "maxLength": 512,
             "minLength": 1,
             "title": "Template Name",
             "type": "string"
           },
           "timezone": {
-            "default": "America/Sao_Paulo",
-            "description": "IANA timezone used to interpret a naive 'scheduled_at'.",
-            "title": "Timezone",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "description": "IANA timezone used to interpret a naive 'scheduled_at'. Defaults to the business's configured timezone (America/Sao_Paulo when none is set).",
+            "title": "Timezone"
           },
           "transmission_type": {
-            "const": "whatsapp_template",
+            "$ref": "#/components/schemas/TransmissionType",
             "default": "whatsapp_template",
-            "description": "Only 'whatsapp_template' is supported for now.",
-            "title": "Transmission Type",
-            "type": "string"
+            "description": "Transmission kind: 'whatsapp_template' or 'whatsapp_freeform'."
           },
           "variable_columns": {
             "anyOf": [
@@ -2079,7 +2790,6 @@
         },
         "required": [
           "name",
-          "template_name",
           "recipients"
         ],
         "title": "CreateTransmissionPreviewIn",
@@ -2232,27 +2942,6 @@
       },
       "MenusOut": {
         "properties": {
-          "ai_model": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Ai Model"
-          },
-          "ai_model_reasoning": {
-            "anyOf": [
-              {
-                "$ref": "#/components/schemas/ReasoningChoices"
-              },
-              {
-                "type": "null"
-              }
-            ]
-          },
           "id": {
             "anyOf": [
               {
@@ -2438,18 +3127,6 @@
         ],
         "title": "PrincipalResponse",
         "type": "object"
-      },
-      "ReasoningChoices": {
-        "enum": [
-          "none",
-          "minimal",
-          "low",
-          "medium",
-          "high",
-          "xhigh"
-        ],
-        "title": "ReasoningChoices",
-        "type": "string"
       },
       "RegistrationTaskStatus": {
         "description": "Lifecycle of an async registration job.\n\n``PENDING`` is created by ``POST /auth/register`` before the worker picks it\nup. ``PROCESSING`` means the dramatiq actor is running. Terminal states are\n``COMPLETED`` (account ready) and ``FAILED`` (see ``error_code`` / ``error_detail``).",
@@ -2772,12 +3449,142 @@
         "title": "SingleChatMessage",
         "type": "object"
       },
-      "TemplateButton": {
-        "description": "A single template button.\n\n``type`` is one of QUICK_REPLY, URL, PHONE_NUMBER. URL/PHONE_NUMBER buttons\ncarry the corresponding ``url``/``phone_number`` field.",
+      "StartTemplateConversationOut": {
+        "description": "Response for ``POST /chats/template-conversations``.",
         "properties": {
+          "chat_id": {
+            "format": "uuid",
+            "title": "Chat Id",
+            "type": "string"
+          },
+          "consumer_id": {
+            "format": "uuid",
+            "title": "Consumer Id",
+            "type": "string"
+          },
+          "user_message": {
+            "$ref": "#/components/schemas/ChatMessageSummaryOut"
+          }
+        },
+        "required": [
+          "user_message",
+          "chat_id",
+          "consumer_id"
+        ],
+        "title": "StartTemplateConversationOut",
+        "type": "object"
+      },
+      "StartTemplateConversationRequest": {
+        "description": "Add a contact and open the conversation with an approved template.\n\n``phone`` is any international number in E.164 form (leading ``+``). The business\nline to send from may be omitted only when the business has a single line.",
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "name": {
+            "anyOf": [
+              {
+                "maxLength": 50,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Name"
+          },
+          "phone": {
+            "description": "International phone number, E.164 with leading '+'",
+            "title": "Phone",
+            "type": "string"
+          },
+          "template_id": {
+            "format": "uuid",
+            "title": "Template Id",
+            "type": "string"
+          },
+          "variables": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Body/button variable values, keyed '1','2',…",
+            "title": "Variables",
+            "type": "object"
+          },
+          "whatsapp_number_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Whatsapp Number Id"
+          }
+        },
+        "required": [
+          "template_id",
+          "phone"
+        ],
+        "title": "StartTemplateConversationRequest",
+        "type": "object"
+      },
+      "TemplateButton": {
+        "description": "A single template button.\n\n``type`` is one of QUICK_REPLY, URL, PHONE_NUMBER, VOICE_CALL, FLOW, REQUEST_CONTACT_INFO, ORDER_DETAILS. URL/PHONE_NUMBER\nbuttons carry the corresponding ``url``/``phone_number`` field; FLOW buttons carry\n``flow_id`` and, when navigating, ``navigate_screen``. REQUEST_CONTACT_INFO has no\n``text`` because Meta sets its label. Combination rules are checked\non submission by ``validate_for_submission``.",
+        "properties": {
+          "flow_action": {
+            "anyOf": [
+              {
+                "enum": [
+                  "navigate",
+                  "data_exchange"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flow Action"
+          },
+          "flow_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flow Id"
+          },
+          "navigate_screen": {
+            "anyOf": [
+              {
+                "maxLength": 128,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Navigate Screen"
+          },
           "phone_number": {
             "anyOf": [
               {
+                "maxLength": 20,
                 "type": "string"
               },
               {
@@ -2787,18 +3594,20 @@
             "title": "Phone Number"
           },
           "text": {
+            "default": "",
             "maxLength": 25,
             "title": "Text",
             "type": "string"
           },
           "type": {
-            "description": "QUICK_REPLY | URL | PHONE_NUMBER",
+            "description": "QUICK_REPLY | URL | PHONE_NUMBER | VOICE_CALL | FLOW | REQUEST_CONTACT_INFO | ORDER_DETAILS",
             "title": "Type",
             "type": "string"
           },
           "url": {
             "anyOf": [
               {
+                "maxLength": 2000,
                 "type": "string"
               },
               {
@@ -2809,8 +3618,7 @@
           }
         },
         "required": [
-          "type",
-          "text"
+          "type"
         ],
         "title": "TemplateButton",
         "type": "object"
@@ -2818,6 +3626,39 @@
       "TemplateButtonOut": {
         "description": "Stored/returned button. Label length is uncapped so synced templates can be listed.",
         "properties": {
+          "flow_action": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flow Action"
+          },
+          "flow_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Flow Id"
+          },
+          "navigate_screen": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Navigate Screen"
+          },
           "phone_number": {
             "anyOf": [
               {
@@ -2830,11 +3671,12 @@
             "title": "Phone Number"
           },
           "text": {
+            "default": "",
             "title": "Text",
             "type": "string"
           },
           "type": {
-            "description": "QUICK_REPLY | URL | PHONE_NUMBER",
+            "description": "QUICK_REPLY | URL | PHONE_NUMBER | VOICE_CALL | FLOW | REQUEST_CONTACT_INFO | ORDER_DETAILS | COPY_CODE | OTP",
             "title": "Type",
             "type": "string"
           },
@@ -2851,8 +3693,7 @@
           }
         },
         "required": [
-          "type",
-          "text"
+          "type"
         ],
         "title": "TemplateButtonOut",
         "type": "object"
@@ -3204,6 +4045,11 @@
             "title": "Not On Whatsapp Count",
             "type": "integer"
           },
+          "outside_window_count": {
+            "default": 0,
+            "title": "Outside Window Count",
+            "type": "integer"
+          },
           "phone_column": {
             "title": "Phone Column",
             "type": "string"
@@ -3240,8 +4086,15 @@
             "type": "string"
           },
           "template_name": {
-            "title": "Template Name",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Template Name"
           },
           "transmission_id": {
             "format": "uuid",
@@ -3259,6 +4112,14 @@
           "valid_count": {
             "title": "Valid Count",
             "type": "integer"
+          },
+          "warning_details": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/TransmissionWarningOut"
+            },
+            "title": "Warning Details",
+            "type": "array"
           },
           "warnings": {
             "items": {
@@ -3371,8 +4232,15 @@
             "type": "string"
           },
           "template_name": {
-            "title": "Template Name",
-            "type": "string"
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Template Name"
           },
           "total_recipients": {
             "title": "Total Recipients",
@@ -3405,6 +4273,49 @@
           "business_id"
         ],
         "title": "TransmissionStatusOut",
+        "type": "object"
+      },
+      "TransmissionType": {
+        "description": "The kind of bulk message a transmission sends.\n\n``WHATSAPP_TEMPLATE`` sends an approved template to a phone list. ``WHATSAPP_FREEFORM``\nsends a fixed text and only reaches contacts inside Meta's 24h customer-service window.\nModelled as an enum so further channels can be added without a schema change to the\nstored value.",
+        "enum": [
+          "whatsapp_template",
+          "whatsapp_freeform"
+        ],
+        "title": "TransmissionType",
+        "type": "string"
+      },
+      "TransmissionWarningOut": {
+        "properties": {
+          "code": {
+            "enum": [
+              "marketing_template",
+              "template_not_synced",
+              "variable_unmatched"
+            ],
+            "title": "Code",
+            "type": "string"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "variable": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Variable"
+          }
+        },
+        "required": [
+          "code",
+          "message"
+        ],
+        "title": "TransmissionWarningOut",
         "type": "object"
       },
       "UploadedFile": {
@@ -4112,6 +5023,12 @@
             "title": "Buttons",
             "type": "array"
           },
+          "call_permission_request": {
+            "default": false,
+            "description": "Add Meta's call permission request component (marketing/utility only, no buttons).",
+            "title": "Call Permission Request",
+            "type": "boolean"
+          },
           "category": {
             "$ref": "#/components/schemas/TemplateCategory",
             "default": "utility"
@@ -4151,6 +5068,18 @@
             "$ref": "#/components/schemas/TemplateHeaderFormat",
             "default": "none"
           },
+          "header_media_document_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Header Media Document Id"
+          },
           "header_text": {
             "anyOf": [
               {
@@ -4175,6 +5104,19 @@
             "pattern": "^[a-z0-9_]+$",
             "title": "Name",
             "type": "string"
+          },
+          "waba_id": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "minLength": 1,
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waba Id"
           }
         },
         "required": [
@@ -4203,6 +5145,12 @@
             },
             "title": "Buttons",
             "type": "array"
+          },
+          "call_permission_request": {
+            "default": false,
+            "description": "Add Meta's call permission request component (marketing/utility only, no buttons).",
+            "title": "Call Permission Request",
+            "type": "boolean"
           },
           "category": {
             "$ref": "#/components/schemas/TemplateCategory",
@@ -4247,6 +5195,18 @@
           "header_format": {
             "$ref": "#/components/schemas/TemplateHeaderFormat",
             "default": "none"
+          },
+          "header_media_document_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Header Media Document Id"
           },
           "header_text": {
             "anyOf": [
@@ -4330,6 +5290,17 @@
           },
           "status": {
             "$ref": "#/components/schemas/TemplateStatus"
+          },
+          "waba_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Waba Id"
           }
         },
         "required": [
@@ -4345,7 +5316,7 @@
         "type": "object"
       },
       "WhatsAppTemplateUpdate": {
-        "description": "Partial update. Approved templates can only be edited while in DRAFT/REJECTED.",
+        "description": "Partial update. Content edits to APPROVED/PAUSED templates are sent to Meta immediately.",
         "properties": {
           "body_text": {
             "anyOf": [
@@ -4373,6 +5344,17 @@
               }
             ],
             "title": "Buttons"
+          },
+          "call_permission_request": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Call Permission Request"
           },
           "category": {
             "anyOf": [
@@ -4431,6 +5413,18 @@
                 "type": "null"
               }
             ]
+          },
+          "header_media_document_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Header Media Document Id"
           },
           "header_text": {
             "anyOf": [
@@ -6157,6 +7151,331 @@
         ]
       }
     },
+    "/api/v1/businesses/library/stickers": {
+      "get": {
+        "description": "Returns the library stickers of the authenticated user's business, newest first, paged with `limit` and `offset`.",
+        "operationId": "listBusinessLibraryStickers",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "minimum": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessLibraryStickerListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List library stickers",
+        "tags": [
+          "business-library"
+        ]
+      },
+      "post": {
+        "description": "Uploads a WhatsApp sticker to the library of the authenticated user's business. It must be a 512x512 WebP of at most 100 KB, or 500 KB when animated. Stickers are kept apart from library images and are sent to customers as WhatsApp stickers, without a caption.",
+        "operationId": "uploadBusinessLibrarySticker",
+        "parameters": [
+          {
+            "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_business_library_sticker_for_current_business_api_v1_businesses_library_stickers_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BusinessLibraryImageOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Upload a library sticker",
+        "tags": [
+          "business-library"
+        ]
+      }
+    },
+    "/api/v1/businesses/library/stickers/{sticker_id}": {
+      "delete": {
+        "description": "Removes a sticker from the library. Copies already delivered on WhatsApp are unaffected, but the inbox can no longer show the sticker in earlier messages.",
+        "operationId": "deleteBusinessLibrarySticker",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "sticker_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Sticker Id",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Business UUID whose library is targeted. Required when the user has more than one business.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Delete a library sticker",
+        "tags": [
+          "business-library"
+        ]
+      }
+    },
     "/api/v1/businesses/menus": {
       "get": {
         "description": "Returns the product catalog menus published by the business named in the `business-id` header.",
@@ -7713,6 +9032,105 @@
         ]
       }
     },
+    "/api/v1/chats/template-conversations": {
+      "post": {
+        "description": "Adds a contact by international phone number (E.164, leading `+`) and opens the conversation by sending an approved WhatsApp template. An existing contact with the same number is reused. Pass `whatsapp_number_id` when the business has more than one WhatsApp number. The business is taken from the `business-id` header.",
+        "operationId": "startTemplateConversation",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Business-Id",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StartTemplateConversationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StartTemplateConversationOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Start a conversation with a template",
+        "tags": [
+          "messages"
+        ]
+      }
+    },
     "/api/v1/chats/{chat_id}": {
       "delete": {
         "description": "Deletes the conversation. Deleting one that is already deleted returns `410`.",
@@ -8923,7 +10341,7 @@
                 }
               }
             },
-            "description": "Too many uploads for this user or chat in the current rate-limit window."
+            "description": "Too many uploads for this business in the current rate-limit window."
           },
           "default": {
             "content": {
@@ -8944,6 +10362,604 @@
         "summary": "Upload an attachment",
         "tags": [
           "messages"
+        ]
+      }
+    },
+    "/api/v1/contacts": {
+      "get": {
+        "description": "Returns the contacts for the business in the `business-id` header. Use `search` to match by name, phone or email, `chatbot_id` to narrow the list to one assistant, and `page` / `page_size` to page through the result.",
+        "operationId": "listContacts",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "chatbot_id",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "uuid",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Chatbot Id"
+            }
+          },
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 100,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Search"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "title": "Page",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Page Size",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactListOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List contacts",
+        "tags": [
+          "contacts"
+        ]
+      },
+      "post": {
+        "description": "Creates a contact for the business in the `business-id` header. The phone number is fixed after creation; use the update operation for the name, email, tags and notes.",
+        "operationId": "createContact",
+        "parameters": [
+          {
+            "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactCreateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "409": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "A contact with that phone number already exists for this business."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create a contact",
+        "tags": [
+          "contacts"
+        ]
+      }
+    },
+    "/api/v1/contacts/import": {
+      "post": {
+        "description": "Creates or updates contacts from a list of rows for the business in the `business-id` header. Invalid rows are skipped and reported with their 0-based index in the `rows` array; valid rows are still applied.",
+        "operationId": "importContacts",
+        "parameters": [
+          {
+            "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactImportIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactImportOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Import contacts",
+        "tags": [
+          "contacts"
+        ]
+      }
+    },
+    "/api/v1/contacts/{contact_id}": {
+      "get": {
+        "description": "Returns one contact, including the conversations that belong to it. A contact from another business returns `404` rather than leaking that it exists.",
+        "operationId": "getContact",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Contact Id",
+              "type": "string"
+            }
+          },
+          {
+            "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactDetailOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Retrieve a contact",
+        "tags": [
+          "contacts"
+        ]
+      },
+      "patch": {
+        "description": "Partially updates a contact's name, email, tags or notes. The phone number cannot be changed after the contact is created.",
+        "operationId": "updateContact",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "contact_id",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "title": "Contact Id",
+              "type": "string"
+            }
+          },
+          {
+            "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+            "in": "header",
+            "name": "business-id",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.",
+              "title": "Business-Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ContactUpdateIn"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ContactOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "401": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Missing or invalid credentials."
+          },
+          "403": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The credential is valid but not authorized for this action."
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "The resource, or the business named in the request, does not exist."
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          },
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApiError"
+                }
+              }
+            },
+            "description": "Unexpected error."
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update a contact",
+        "tags": [
+          "contacts"
         ]
       }
     },
@@ -9196,6 +11212,25 @@
               "minimum": 1,
               "title": "Limit",
               "type": "integer"
+            }
+          },
+          {
+            "description": "Case-insensitive substring of the name.",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "maxLength": 255,
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Case-insensitive substring of the name.",
+              "title": "Q"
             }
           },
           {
@@ -11141,6 +13176,10 @@
     {
       "description": "Read a conversation's messages, send free-form or template replies, and upload attachments.",
       "name": "messages"
+    },
+    {
+      "description": "Create, import, list and update business contacts used by chats and template conversations.",
+      "name": "contacts"
     },
     {
       "description": "Manage WhatsApp message templates: draft them locally, submit them to Meta for review and sync approval status back.",

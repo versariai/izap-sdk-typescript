@@ -97,6 +97,28 @@ export type BodyUploadBusinessLibraryImageForCurrentBusinessApiV1BusinessesLibra
 };
 
 /**
+ * Body_upload_business_library_sticker_for_current_business_api_v1_businesses_library_stickers_post
+ */
+export type BodyUploadBusinessLibraryStickerForCurrentBusinessApiV1BusinessesLibraryStickersPost = {
+    /**
+     * Description
+     */
+    description?: string | null;
+    /**
+     * File
+     */
+    file: Blob | File;
+    /**
+     * Tags
+     */
+    tags?: string | null;
+    /**
+     * Title
+     */
+    title?: string | null;
+};
+
+/**
  * Body_upload_files_api_v1_chats__chat_id__upload_post
  */
 export type BodyUploadFilesApiV1ChatsChatIdUploadPost = {
@@ -118,6 +140,10 @@ export type BusinessCreateRequest = {
      * Owner Contact
      */
     owner_contact?: string | null;
+    /**
+     * Owner Contact Region
+     */
+    owner_contact_region?: string | null;
     /**
      * Owner Name
      */
@@ -320,6 +346,34 @@ export type BusinessLibraryImageOut = {
 };
 
 /**
+ * BusinessLibraryStickerListResponse
+ *
+ * Paginated list of WhatsApp stickers in the library (newest first).
+ */
+export type BusinessLibraryStickerListResponse = {
+    /**
+     * Has Next
+     */
+    has_next: boolean;
+    /**
+     * Limit
+     */
+    limit: number;
+    /**
+     * Offset
+     */
+    offset: number;
+    /**
+     * Stickers
+     */
+    stickers: Array<BusinessLibraryImageOut>;
+    /**
+     * Total
+     */
+    total: number;
+};
+
+/**
  * BusinessMenuOut
  */
 export type BusinessMenuOut = {
@@ -517,6 +571,10 @@ export type ChatMessageStatus = 'new' | 'queued' | 'sending' | 'sent' | 'failed'
  * A chat message as embedded in the send-message responses below.
  */
 export type ChatMessageSummaryOut = {
+    /**
+     * Client Message Id
+     */
+    client_message_id?: string | null;
     /**
      * Content
      */
@@ -795,6 +853,10 @@ export type ChatbotOut = {
      */
     effective_locale: string;
     /**
+     * Hold Ai After Manual Reply
+     */
+    hold_ai_after_manual_reply?: boolean;
+    /**
      * Id
      */
     id: string;
@@ -866,6 +928,108 @@ export type ChatbotWhatsAppNumberOut = {
      * Verified Name
      */
     verified_name?: string | null;
+};
+
+/**
+ * ContactConversationOut
+ */
+export type ContactConversationOut = {
+    /**
+     * Chatbot Id
+     */
+    chatbot_id: string | null;
+    /**
+     * Chatbot Name
+     */
+    chatbot_name: string | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Last Message At
+     */
+    last_message_at: string | null;
+};
+
+/**
+ * ContactCreateIn
+ */
+export type ContactCreateIn = {
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Notes
+     */
+    notes?: string | null;
+    /**
+     * Phone Number
+     */
+    phone_number: string;
+    /**
+     * Tags
+     */
+    tags?: Array<string>;
+};
+
+/**
+ * ContactDetailOut
+ */
+export type ContactDetailOut = {
+    /**
+     * Ai Paused
+     */
+    ai_paused: boolean;
+    /**
+     * Conversation Id
+     */
+    conversation_id: string | null;
+    /**
+     * Conversations
+     */
+    conversations: Array<ContactConversationOut>;
+    /**
+     * Created At
+     */
+    created_at: string;
+    /**
+     * Email
+     */
+    email: string | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Last Interaction At
+     */
+    last_interaction_at: string | null;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Notes
+     */
+    notes: string | null;
+    /**
+     * Opted Out
+     */
+    opted_out: boolean;
+    /**
+     * Phone Number
+     */
+    phone_number: string | null;
+    /**
+     * Tags
+     */
+    tags: Array<string>;
 };
 
 /**
@@ -972,6 +1136,166 @@ export type ContactFilterOut = {
 };
 
 /**
+ * ContactImportIn
+ */
+export type ContactImportIn = {
+    /**
+     * Rows
+     */
+    rows: Array<ContactImportRowIn>;
+};
+
+/**
+ * ContactImportOut
+ */
+export type ContactImportOut = {
+    /**
+     * Created
+     */
+    created: number;
+    /**
+     * Skipped
+     */
+    skipped: Array<ContactImportSkippedOut>;
+    /**
+     * Updated
+     */
+    updated: number;
+};
+
+/**
+ * ContactImportRowIn
+ */
+export type ContactImportRowIn = {
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Phone Number
+     */
+    phone_number: string;
+    /**
+     * Tags
+     */
+    tags?: Array<string>;
+};
+
+/**
+ * ContactImportSkippedOut
+ */
+export type ContactImportSkippedOut = {
+    /**
+     * Reason
+     */
+    reason: 'invalid_phone' | 'duplicate_in_file' | 'invalid_email';
+    /**
+     * Row
+     */
+    row: number;
+};
+
+/**
+ * ContactListOut
+ */
+export type ContactListOut = {
+    /**
+     * Items
+     */
+    items: Array<ContactOut>;
+    /**
+     * Page
+     */
+    page: number;
+    /**
+     * Page Size
+     */
+    page_size: number;
+    /**
+     * Total
+     */
+    total: number;
+};
+
+/**
+ * ContactOut
+ */
+export type ContactOut = {
+    /**
+     * Ai Paused
+     */
+    ai_paused: boolean;
+    /**
+     * Conversation Id
+     */
+    conversation_id: string | null;
+    /**
+     * Created At
+     */
+    created_at: string;
+    /**
+     * Email
+     */
+    email: string | null;
+    /**
+     * Id
+     */
+    id: string;
+    /**
+     * Last Interaction At
+     */
+    last_interaction_at: string | null;
+    /**
+     * Name
+     */
+    name: string;
+    /**
+     * Notes
+     */
+    notes: string | null;
+    /**
+     * Opted Out
+     */
+    opted_out: boolean;
+    /**
+     * Phone Number
+     */
+    phone_number: string | null;
+    /**
+     * Tags
+     */
+    tags: Array<string>;
+};
+
+/**
+ * ContactUpdateIn
+ *
+ * Only the fields sent are changed; the phone number is fixed once created.
+ */
+export type ContactUpdateIn = {
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Notes
+     */
+    notes?: string | null;
+    /**
+     * Tags
+     */
+    tags?: Array<string> | null;
+};
+
+/**
  * CreateChatIn
  */
 export type CreateChatIn = {
@@ -999,6 +1323,10 @@ export type CreateMessageIn = {
      * Attachments
      */
     attachments?: Array<MessageAttachment> | null;
+    /**
+     * Client Message Id
+     */
+    client_message_id?: string | null;
     /**
      * Content
      */
@@ -1054,11 +1382,41 @@ export type CreateTransmissionPreviewIn = {
      */
     business_id?: string | null;
     /**
+     * Header Media Document Id
+     *
+     * UUID or filename of a document or video in the business's media library to use as the template's DOCUMENT or VIDEO header. Mutually exclusive with the other header media sources.
+     */
+    header_media_document_id?: string | null;
+    /**
+     * Header Media Filename
+     *
+     * Name recipients see for a DOCUMENT header. Ignored for image and video headers.
+     */
+    header_media_filename?: string | null;
+    /**
+     * Header Media Image Id
+     *
+     * UUID or filename of an image in the business's media library to use as the template's IMAGE header. Mutually exclusive with the other header media sources.
+     */
+    header_media_image_id?: string | null;
+    /**
+     * Header Media Url
+     *
+     * Public https:// URL of the file for the template's media header (an image for an IMAGE header, a PDF for a DOCUMENT header, an MP4 for a VIDEO header). Required when the template was approved with a media header; the same file goes to every recipient. Mutually exclusive with the library header fields.
+     */
+    header_media_url?: string | null;
+    /**
      * Max Messages Per Minute
      *
      * Sending pace cap. Must be between 1 and 200 messages per minute.
      */
     max_messages_per_minute?: number;
+    /**
+     * Message Text
+     *
+     * Text to send. Required for 'whatsapp_freeform', which only reaches contacts inside the WhatsApp customer-service window; others are skipped.
+     */
+    message_text?: string | null;
     /**
      * Name
      *
@@ -1094,21 +1452,19 @@ export type CreateTransmissionPreviewIn = {
     /**
      * Template Name
      *
-     * Name of the pre-approved WhatsApp Cloud API template to send.
+     * Name of the pre-approved WhatsApp Cloud API template to send. Required for 'whatsapp_template'; not accepted for 'whatsapp_freeform', which stores a fixed default.
      */
-    template_name: string;
+    template_name?: string;
     /**
      * Timezone
      *
-     * IANA timezone used to interpret a naive 'scheduled_at'.
+     * IANA timezone used to interpret a naive 'scheduled_at'. Defaults to the business's configured timezone (America/Sao_Paulo when none is set).
      */
-    timezone?: string;
+    timezone?: string | null;
     /**
-     * Transmission Type
-     *
-     * Only 'whatsapp_template' is supported for now.
+     * Transmission kind: 'whatsapp_template' or 'whatsapp_freeform'.
      */
-    transmission_type?: 'whatsapp_template';
+    transmission_type?: TransmissionType;
     /**
      * Variable Columns
      *
@@ -1226,11 +1582,6 @@ export type MenuUpdateIn = {
  */
 export type MenusOut = {
     /**
-     * Ai Model
-     */
-    ai_model?: string | null;
-    ai_model_reasoning?: ReasoningChoices | null;
-    /**
      * Id
      */
     id?: string | null;
@@ -1347,11 +1698,6 @@ export type PrincipalResponse = {
      */
     user_id?: string | null;
 };
-
-/**
- * ReasoningChoices
- */
-export type ReasoningChoices = 'none' | 'minimal' | 'low' | 'medium' | 'high' | 'xhigh';
 
 /**
  * RegistrationTaskStatus
@@ -1530,14 +1876,87 @@ export type SingleChatMessage = {
 };
 
 /**
+ * StartTemplateConversationOut
+ *
+ * Response for ``POST /chats/template-conversations``.
+ */
+export type StartTemplateConversationOut = {
+    /**
+     * Chat Id
+     */
+    chat_id: string;
+    /**
+     * Consumer Id
+     */
+    consumer_id: string;
+    user_message: ChatMessageSummaryOut;
+};
+
+/**
+ * StartTemplateConversationRequest
+ *
+ * Add a contact and open the conversation with an approved template.
+ *
+ * ``phone`` is any international number in E.164 form (leading ``+``). The business
+ * line to send from may be omitted only when the business has a single line.
+ */
+export type StartTemplateConversationRequest = {
+    /**
+     * Email
+     */
+    email?: string | null;
+    /**
+     * Name
+     */
+    name?: string | null;
+    /**
+     * Phone
+     *
+     * International phone number, E.164 with leading '+'
+     */
+    phone: string;
+    /**
+     * Template Id
+     */
+    template_id: string;
+    /**
+     * Variables
+     *
+     * Body/button variable values, keyed '1','2',…
+     */
+    variables?: {
+        [key: string]: string;
+    };
+    /**
+     * Whatsapp Number Id
+     */
+    whatsapp_number_id?: string | null;
+};
+
+/**
  * TemplateButton
  *
  * A single template button.
  *
- * ``type`` is one of QUICK_REPLY, URL, PHONE_NUMBER. URL/PHONE_NUMBER buttons
- * carry the corresponding ``url``/``phone_number`` field.
+ * ``type`` is one of QUICK_REPLY, URL, PHONE_NUMBER, VOICE_CALL, FLOW, REQUEST_CONTACT_INFO, ORDER_DETAILS. URL/PHONE_NUMBER
+ * buttons carry the corresponding ``url``/``phone_number`` field; FLOW buttons carry
+ * ``flow_id`` and, when navigating, ``navigate_screen``. REQUEST_CONTACT_INFO has no
+ * ``text`` because Meta sets its label. Combination rules are checked
+ * on submission by ``validate_for_submission``.
  */
 export type TemplateButton = {
+    /**
+     * Flow Action
+     */
+    flow_action?: 'navigate' | 'data_exchange' | null;
+    /**
+     * Flow Id
+     */
+    flow_id?: string | null;
+    /**
+     * Navigate Screen
+     */
+    navigate_screen?: string | null;
     /**
      * Phone Number
      */
@@ -1545,11 +1964,11 @@ export type TemplateButton = {
     /**
      * Text
      */
-    text: string;
+    text?: string;
     /**
      * Type
      *
-     * QUICK_REPLY | URL | PHONE_NUMBER
+     * QUICK_REPLY | URL | PHONE_NUMBER | VOICE_CALL | FLOW | REQUEST_CONTACT_INFO | ORDER_DETAILS
      */
     type: string;
     /**
@@ -1565,17 +1984,29 @@ export type TemplateButton = {
  */
 export type TemplateButtonOut = {
     /**
+     * Flow Action
+     */
+    flow_action?: string | null;
+    /**
+     * Flow Id
+     */
+    flow_id?: string | null;
+    /**
+     * Navigate Screen
+     */
+    navigate_screen?: string | null;
+    /**
      * Phone Number
      */
     phone_number?: string | null;
     /**
      * Text
      */
-    text: string;
+    text?: string;
     /**
      * Type
      *
-     * QUICK_REPLY | URL | PHONE_NUMBER
+     * QUICK_REPLY | URL | PHONE_NUMBER | VOICE_CALL | FLOW | REQUEST_CONTACT_INFO | ORDER_DETAILS | COPY_CODE | OTP
      */
     type: string;
     /**
@@ -1823,6 +2254,10 @@ export type TransmissionPreviewOut = {
      */
     not_on_whatsapp_count?: number;
     /**
+     * Outside Window Count
+     */
+    outside_window_count?: number;
+    /**
      * Phone Column
      */
     phone_column: string;
@@ -1849,7 +2284,7 @@ export type TransmissionPreviewOut = {
     /**
      * Template Name
      */
-    template_name: string;
+    template_name: string | null;
     /**
      * Transmission Id
      */
@@ -1866,6 +2301,10 @@ export type TransmissionPreviewOut = {
      * Valid Count
      */
     valid_count: number;
+    /**
+     * Warning Details
+     */
+    warning_details?: Array<TransmissionWarningOut>;
     /**
      * Warnings
      */
@@ -1923,7 +2362,7 @@ export type TransmissionStatusOut = {
     /**
      * Template Name
      */
-    template_name: string;
+    template_name: string | null;
     /**
      * Total Recipients
      */
@@ -1936,6 +2375,36 @@ export type TransmissionStatusOut = {
      * Transmission Type
      */
     transmission_type: string;
+};
+
+/**
+ * TransmissionType
+ *
+ * The kind of bulk message a transmission sends.
+ *
+ * ``WHATSAPP_TEMPLATE`` sends an approved template to a phone list. ``WHATSAPP_FREEFORM``
+ * sends a fixed text and only reaches contacts inside Meta's 24h customer-service window.
+ * Modelled as an enum so further channels can be added without a schema change to the
+ * stored value.
+ */
+export type TransmissionType = 'whatsapp_template' | 'whatsapp_freeform';
+
+/**
+ * TransmissionWarningOut
+ */
+export type TransmissionWarningOut = {
+    /**
+     * Code
+     */
+    code: 'marketing_template' | 'template_not_synced' | 'variable_unmatched';
+    /**
+     * Message
+     */
+    message: string;
+    /**
+     * Variable
+     */
+    variable?: string | null;
 };
 
 /**
@@ -2339,6 +2808,12 @@ export type WhatsAppTemplateCreate = {
      * Buttons
      */
     buttons?: Array<TemplateButton>;
+    /**
+     * Call Permission Request
+     *
+     * Add Meta's call permission request component (marketing/utility only, no buttons).
+     */
+    call_permission_request?: boolean;
     category?: TemplateCategory;
     /**
      * Display Name
@@ -2354,6 +2829,10 @@ export type WhatsAppTemplateCreate = {
     footer_text?: string | null;
     header_format?: TemplateHeaderFormat;
     /**
+     * Header Media Document Id
+     */
+    header_media_document_id?: string | null;
+    /**
      * Header Text
      */
     header_text?: string | null;
@@ -2365,6 +2844,10 @@ export type WhatsAppTemplateCreate = {
      * Name
      */
     name: string;
+    /**
+     * Waba Id
+     */
+    waba_id?: string | null;
 };
 
 /**
@@ -2383,6 +2866,12 @@ export type WhatsAppTemplateOut = {
      * Buttons
      */
     buttons?: Array<TemplateButtonOut>;
+    /**
+     * Call Permission Request
+     *
+     * Add Meta's call permission request component (marketing/utility only, no buttons).
+     */
+    call_permission_request?: boolean;
     category?: TemplateCategory;
     /**
      * Created
@@ -2401,6 +2890,10 @@ export type WhatsAppTemplateOut = {
      */
     footer_text?: string | null;
     header_format?: TemplateHeaderFormat;
+    /**
+     * Header Media Document Id
+     */
+    header_media_document_id?: string | null;
     /**
      * Header Text
      */
@@ -2438,12 +2931,16 @@ export type WhatsAppTemplateOut = {
      */
     rejection_reason?: string | null;
     status: TemplateStatus;
+    /**
+     * Waba Id
+     */
+    waba_id?: string | null;
 };
 
 /**
  * WhatsAppTemplateUpdate
  *
- * Partial update. Approved templates can only be edited while in DRAFT/REJECTED.
+ * Partial update. Content edits to APPROVED/PAUSED templates are sent to Meta immediately.
  */
 export type WhatsAppTemplateUpdate = {
     /**
@@ -2454,6 +2951,10 @@ export type WhatsAppTemplateUpdate = {
      * Buttons
      */
     buttons?: Array<TemplateButton> | null;
+    /**
+     * Call Permission Request
+     */
+    call_permission_request?: boolean | null;
     category?: TemplateCategory | null;
     /**
      * Display Name
@@ -2468,6 +2969,10 @@ export type WhatsAppTemplateUpdate = {
      */
     footer_text?: string | null;
     header_format?: TemplateHeaderFormat | null;
+    /**
+     * Header Media Document Id
+     */
+    header_media_document_id?: string | null;
     /**
      * Header Text
      */
@@ -3302,6 +3807,167 @@ export type DeleteBusinessLibraryImageResponses = {
 
 export type DeleteBusinessLibraryImageResponse = DeleteBusinessLibraryImageResponses[keyof DeleteBusinessLibraryImageResponses];
 
+export type ListBusinessLibraryStickersData = {
+    body?: never;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * Business UUID whose library is targeted. Required when the user has more than one business.
+         */
+        'business-id'?: string | null;
+    };
+    path?: never;
+    query?: {
+        /**
+         * Limit
+         */
+        limit?: number;
+        /**
+         * Offset
+         */
+        offset?: number;
+    };
+    url: '/api/v1/businesses/library/stickers';
+};
+
+export type ListBusinessLibraryStickersErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type ListBusinessLibraryStickersError = ListBusinessLibraryStickersErrors[keyof ListBusinessLibraryStickersErrors];
+
+export type ListBusinessLibraryStickersResponses = {
+    /**
+     * Successful Response
+     */
+    200: BusinessLibraryStickerListResponse;
+};
+
+export type ListBusinessLibraryStickersResponse = ListBusinessLibraryStickersResponses[keyof ListBusinessLibraryStickersResponses];
+
+export type UploadBusinessLibraryStickerData = {
+    body: BodyUploadBusinessLibraryStickerForCurrentBusinessApiV1BusinessesLibraryStickersPost;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * Business UUID whose library is targeted. Required when the user has more than one business.
+         */
+        'business-id'?: string | null;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/businesses/library/stickers';
+};
+
+export type UploadBusinessLibraryStickerErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type UploadBusinessLibraryStickerError = UploadBusinessLibraryStickerErrors[keyof UploadBusinessLibraryStickerErrors];
+
+export type UploadBusinessLibraryStickerResponses = {
+    /**
+     * Successful Response
+     */
+    201: BusinessLibraryImageOut;
+};
+
+export type UploadBusinessLibraryStickerResponse = UploadBusinessLibraryStickerResponses[keyof UploadBusinessLibraryStickerResponses];
+
+export type DeleteBusinessLibraryStickerData = {
+    body?: never;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * Business UUID whose library is targeted. Required when the user has more than one business.
+         */
+        'business-id'?: string | null;
+    };
+    path: {
+        /**
+         * Sticker Id
+         */
+        sticker_id: string;
+    };
+    query?: never;
+    url: '/api/v1/businesses/library/stickers/{sticker_id}';
+};
+
+export type DeleteBusinessLibraryStickerErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type DeleteBusinessLibraryStickerError = DeleteBusinessLibraryStickerErrors[keyof DeleteBusinessLibraryStickerErrors];
+
+export type DeleteBusinessLibraryStickerResponses = {
+    /**
+     * Successful Response
+     */
+    204: void;
+};
+
+export type DeleteBusinessLibraryStickerResponse = DeleteBusinessLibraryStickerResponses[keyof DeleteBusinessLibraryStickerResponses];
+
 export type ListBusinessMenusData = {
     body?: never;
     headers?: {
@@ -4056,6 +4722,53 @@ export type CreateChatResponses = {
 
 export type CreateChatResponse = CreateChatResponses[keyof CreateChatResponses];
 
+export type StartTemplateConversationData = {
+    body: StartTemplateConversationRequest;
+    headers?: {
+        /**
+         * Business-Id
+         */
+        'business-id'?: string;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/chats/template-conversations';
+};
+
+export type StartTemplateConversationErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type StartTemplateConversationError = StartTemplateConversationErrors[keyof StartTemplateConversationErrors];
+
+export type StartTemplateConversationResponses = {
+    /**
+     * Successful Response
+     */
+    201: StartTemplateConversationOut;
+};
+
+export type StartTemplateConversationResponse = StartTemplateConversationResponses[keyof StartTemplateConversationResponses];
+
 export type DeleteChatData = {
     body?: never;
     path: {
@@ -4636,7 +5349,7 @@ export type UploadChatAttachmentErrors = {
      */
     422: HttpValidationError;
     /**
-     * Too many uploads for this user or chat in the current rate-limit window.
+     * Too many uploads for this business in the current rate-limit window.
      */
     429: ApiError;
     /**
@@ -4655,6 +5368,282 @@ export type UploadChatAttachmentResponses = {
 };
 
 export type UploadChatAttachmentResponse = UploadChatAttachmentResponses[keyof UploadChatAttachmentResponses];
+
+export type ListContactsData = {
+    body?: never;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.
+         */
+        'business-id'?: string | null;
+    };
+    path?: never;
+    query?: {
+        /**
+         * Chatbot Id
+         */
+        chatbot_id?: string | null;
+        /**
+         * Search
+         */
+        search?: string | null;
+        /**
+         * Page
+         */
+        page?: number;
+        /**
+         * Page Size
+         */
+        page_size?: number;
+    };
+    url: '/api/v1/contacts';
+};
+
+export type ListContactsErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type ListContactsError = ListContactsErrors[keyof ListContactsErrors];
+
+export type ListContactsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ContactListOut;
+};
+
+export type ListContactsResponse = ListContactsResponses[keyof ListContactsResponses];
+
+export type CreateContactData = {
+    body: ContactCreateIn;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.
+         */
+        'business-id'?: string | null;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/contacts';
+};
+
+export type CreateContactErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * A contact with that phone number already exists for this business.
+     */
+    409: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type CreateContactError = CreateContactErrors[keyof CreateContactErrors];
+
+export type CreateContactResponses = {
+    /**
+     * Successful Response
+     */
+    201: ContactOut;
+};
+
+export type CreateContactResponse = CreateContactResponses[keyof CreateContactResponses];
+
+export type ImportContactsData = {
+    body: ContactImportIn;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.
+         */
+        'business-id'?: string | null;
+    };
+    path?: never;
+    query?: never;
+    url: '/api/v1/contacts/import';
+};
+
+export type ImportContactsErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type ImportContactsError = ImportContactsErrors[keyof ImportContactsErrors];
+
+export type ImportContactsResponses = {
+    /**
+     * Successful Response
+     */
+    200: ContactImportOut;
+};
+
+export type ImportContactsResponse = ImportContactsResponses[keyof ImportContactsResponses];
+
+export type GetContactData = {
+    body?: never;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.
+         */
+        'business-id'?: string | null;
+    };
+    path: {
+        /**
+         * Contact Id
+         */
+        contact_id: string;
+    };
+    query?: never;
+    url: '/api/v1/contacts/{contact_id}';
+};
+
+export type GetContactErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type GetContactError = GetContactErrors[keyof GetContactErrors];
+
+export type GetContactResponses = {
+    /**
+     * Successful Response
+     */
+    200: ContactDetailOut;
+};
+
+export type GetContactResponse = GetContactResponses[keyof GetContactResponses];
+
+export type UpdateContactData = {
+    body: ContactUpdateIn;
+    headers?: {
+        /**
+         * Business-Id
+         *
+         * UUID of the business the request is scoped to. Required on this route; the deprecated /businesses/{business_id}/... form takes it from the path instead.
+         */
+        'business-id'?: string | null;
+    };
+    path: {
+        /**
+         * Contact Id
+         */
+        contact_id: string;
+    };
+    query?: never;
+    url: '/api/v1/contacts/{contact_id}';
+};
+
+export type UpdateContactErrors = {
+    /**
+     * Missing or invalid credentials.
+     */
+    401: ApiError;
+    /**
+     * The credential is valid but not authorized for this action.
+     */
+    403: ApiError;
+    /**
+     * The resource, or the business named in the request, does not exist.
+     */
+    404: ApiError;
+    /**
+     * Validation Error
+     */
+    422: HttpValidationError;
+    /**
+     * Unexpected error.
+     */
+    default: ApiError;
+};
+
+export type UpdateContactError = UpdateContactErrors[keyof UpdateContactErrors];
+
+export type UpdateContactResponses = {
+    /**
+     * Successful Response
+     */
+    200: ContactOut;
+};
+
+export type UpdateContactResponse = UpdateContactResponses[keyof UpdateContactResponses];
 
 export type ListApiTokensData = {
     body?: never;
@@ -4792,6 +5781,12 @@ export type ListTransmissionsData = {
          * Limit
          */
         limit?: number;
+        /**
+         * Q
+         *
+         * Case-insensitive substring of the name.
+         */
+        q?: string | null;
     };
     url: '/api/v1/transmissions';
 };

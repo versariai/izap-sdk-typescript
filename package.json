@@ -1,6 +1,6 @@
 {
   "name": "@izapai/sdk",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "TypeScript SDK for the iZap REST API: WhatsApp business messaging, templates, chats and webhooks.",
   "type": "module",
   "license": "MIT",

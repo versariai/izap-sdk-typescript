@@ -2,7 +2,7 @@
 
 import { client } from './client.gen.js';
 import { type Client, type ClientMeta, formDataBodySerializer, type Options as Options2, type RequestResult, type TDataShape } from './client/index.js';
-import type { AddAssistantContactFilterEntriesData, AddAssistantContactFilterEntriesErrors, AddAssistantContactFilterEntriesResponses, ArchiveTransmissionData, ArchiveTransmissionErrors, ArchiveTransmissionResponses, CancelTransmissionData, CancelTransmissionErrors, CancelTransmissionResponses, ConfirmTransmissionData, ConfirmTransmissionErrors, ConfirmTransmissionResponses, CreateApiTokenData, CreateApiTokenErrors, CreateApiTokenResponses, CreateBusinessData, CreateBusinessErrors, CreateBusinessMenuData, CreateBusinessMenuErrors, CreateBusinessMenuResponses, CreateBusinessResponses, CreateChatData, CreateChatErrors, CreateChatResponses, CreateCurrentWebhookEndpointData, CreateCurrentWebhookEndpointErrors, CreateCurrentWebhookEndpointResponses, CreateWhatsAppTemplateData, CreateWhatsAppTemplateErrors, CreateWhatsAppTemplateResponses, DeleteAssistantContactFilterEntryData, DeleteAssistantContactFilterEntryErrors, DeleteAssistantContactFilterEntryResponses, DeleteBusinessLibraryDocumentData, DeleteBusinessLibraryDocumentErrors, DeleteBusinessLibraryDocumentResponses, DeleteBusinessLibraryImageData, DeleteBusinessLibraryImageErrors, DeleteBusinessLibraryImageResponses, DeleteChatData, DeleteChatErrors, DeleteChatResponses, DeleteCurrentWebhookEndpointData, DeleteCurrentWebhookEndpointErrors, DeleteCurrentWebhookEndpointResponses, DeleteCurrentWhatsAppNumberData, DeleteCurrentWhatsAppNumberErrors, DeleteCurrentWhatsAppNumberResponses, DeleteWhatsAppTemplateData, DeleteWhatsAppTemplateErrors, DeleteWhatsAppTemplateResponses, DisconnectCurrentWhatsAppNumberData, DisconnectCurrentWhatsAppNumberErrors, DisconnectCurrentWhatsAppNumberResponses, GetAssistantContactFilterData, GetAssistantContactFilterErrors, GetAssistantContactFilterResponses, GetChatPauseStatusData, GetChatPauseStatusErrors, GetChatPauseStatusResponses, GetCurrentBusinessChatMessageDetailsData, GetCurrentBusinessChatMessageDetailsErrors, GetCurrentBusinessChatMessageDetailsResponses, GetCurrentBusinessData, GetCurrentBusinessErrors, GetCurrentBusinessHoursData, GetCurrentBusinessHoursErrors, GetCurrentBusinessHoursResponses, GetCurrentBusinessResponses, GetCurrentWhatsAppBusinessAccountInfoData, GetCurrentWhatsAppBusinessAccountInfoErrors, GetCurrentWhatsAppBusinessAccountInfoResponses, GetCurrentWhatsAppNumberLiveStatusData, GetCurrentWhatsAppNumberLiveStatusErrors, GetCurrentWhatsAppNumberLiveStatusResponses, GetCurrentWhatsAppNumberRegistrationTaskData, GetCurrentWhatsAppNumberRegistrationTaskErrors, GetCurrentWhatsAppNumberRegistrationTaskResponses, GetTransmissionData, GetTransmissionErrors, GetTransmissionResponses, GetWhatsAppTemplateData, GetWhatsAppTemplateErrors, GetWhatsAppTemplateResponses, IntrospectTokenData, IntrospectTokenErrors, IntrospectTokenResponses, ListApiTokensData, ListApiTokensErrors, ListApiTokensResponses, ListBusinessLibraryDocumentsData, ListBusinessLibraryDocumentsErrors, ListBusinessLibraryDocumentsResponses, ListBusinessLibraryImagesData, ListBusinessLibraryImagesErrors, ListBusinessLibraryImagesResponses, ListBusinessMenusData, ListBusinessMenusErrors, ListBusinessMenusResponses, ListChatMessagesData, ListChatMessagesErrors, ListChatMessagesResponses, ListCurrentBusinessChatsData, ListCurrentBusinessChatsErrors, ListCurrentBusinessChatsResponses, ListCurrentWebhookEndpointsData, ListCurrentWebhookEndpointsErrors, ListCurrentWebhookEndpointsResponses, ListCurrentWhatsAppNumbersData, ListCurrentWhatsAppNumbersErrors, ListCurrentWhatsAppNumbersResponses, ListTransmissionsData, ListTransmissionsErrors, ListTransmissionsResponses, ListWhatsAppTemplatesData, ListWhatsAppTemplatesErrors, ListWhatsAppTemplatesResponses, MarkChatReadData, MarkChatReadErrors, MarkChatReadResponses, PauseChatAssistantData, PauseChatAssistantErrors, PauseChatAssistantResponses, PreviewTransmissionData, PreviewTransmissionErrors, PreviewTransmissionResponses, RegisterCurrentWhatsAppNumberData, RegisterCurrentWhatsAppNumberErrors, RegisterCurrentWhatsAppNumberResponses, ResendCurrentWebhookDeliveryData, ResendCurrentWebhookDeliveryErrors, ResendCurrentWebhookDeliveryResponses, ResumeChatAssistantData, ResumeChatAssistantErrors, ResumeChatAssistantResponses, RevokeApiTokenData, RevokeApiTokenErrors, RevokeApiTokenResponses, RotateCurrentWebhookSigningSecretData, RotateCurrentWebhookSigningSecretErrors, RotateCurrentWebhookSigningSecretResponses, SendChatMessageData, SendChatMessageErrors, SendChatMessageResponses, SendChatTemplateMessageData, SendChatTemplateMessageErrors, SendChatTemplateMessageResponses, SendCurrentWhatsAppCatalogData, SendCurrentWhatsAppCatalogErrors, SendCurrentWhatsAppCatalogResponses, SetAssistantContactFilterModeData, SetAssistantContactFilterModeErrors, SetAssistantContactFilterModeResponses, SetChatStatusData, SetChatStatusErrors, SetChatStatusResponses, SetCurrentWhatsAppNumberAssistantData, SetCurrentWhatsAppNumberAssistantErrors, SetCurrentWhatsAppNumberAssistantResponses, SnoozeChatData, SnoozeChatErrors, SnoozeChatResponses, SubmitWhatsAppTemplateData, SubmitWhatsAppTemplateErrors, SubmitWhatsAppTemplateResponses, SyncWhatsAppTemplatesData, SyncWhatsAppTemplatesErrors, SyncWhatsAppTemplatesResponses, UpdateBusinessMenuData, UpdateBusinessMenuErrors, UpdateBusinessMenuResponses, UpdateCurrentBusinessData, UpdateCurrentBusinessErrors, UpdateCurrentBusinessHoursData, UpdateCurrentBusinessHoursErrors, UpdateCurrentBusinessHoursResponses, UpdateCurrentBusinessResponses, UpdateCurrentWebhookEndpointData, UpdateCurrentWebhookEndpointErrors, UpdateCurrentWebhookEndpointResponses, UpdateWhatsAppTemplateData, UpdateWhatsAppTemplateErrors, UpdateWhatsAppTemplateResponses, UploadBusinessLibraryDocumentData, UploadBusinessLibraryDocumentErrors, UploadBusinessLibraryDocumentResponses, UploadBusinessLibraryImageData, UploadBusinessLibraryImageErrors, UploadBusinessLibraryImageResponses, UploadChatAttachmentData, UploadChatAttachmentErrors, UploadChatAttachmentResponses } from './types.gen.js';
+import type { AddAssistantContactFilterEntriesData, AddAssistantContactFilterEntriesErrors, AddAssistantContactFilterEntriesResponses, ArchiveTransmissionData, ArchiveTransmissionErrors, ArchiveTransmissionResponses, CancelTransmissionData, CancelTransmissionErrors, CancelTransmissionResponses, ConfirmTransmissionData, ConfirmTransmissionErrors, ConfirmTransmissionResponses, CreateApiTokenData, CreateApiTokenErrors, CreateApiTokenResponses, CreateBusinessData, CreateBusinessErrors, CreateBusinessMenuData, CreateBusinessMenuErrors, CreateBusinessMenuResponses, CreateBusinessResponses, CreateChatData, CreateChatErrors, CreateChatResponses, CreateContactData, CreateContactErrors, CreateContactResponses, CreateCurrentWebhookEndpointData, CreateCurrentWebhookEndpointErrors, CreateCurrentWebhookEndpointResponses, CreateWhatsAppTemplateData, CreateWhatsAppTemplateErrors, CreateWhatsAppTemplateResponses, DeleteAssistantContactFilterEntryData, DeleteAssistantContactFilterEntryErrors, DeleteAssistantContactFilterEntryResponses, DeleteBusinessLibraryDocumentData, DeleteBusinessLibraryDocumentErrors, DeleteBusinessLibraryDocumentResponses, DeleteBusinessLibraryImageData, DeleteBusinessLibraryImageErrors, DeleteBusinessLibraryImageResponses, DeleteBusinessLibraryStickerData, DeleteBusinessLibraryStickerErrors, DeleteBusinessLibraryStickerResponses, DeleteChatData, DeleteChatErrors, DeleteChatResponses, DeleteCurrentWebhookEndpointData, DeleteCurrentWebhookEndpointErrors, DeleteCurrentWebhookEndpointResponses, DeleteCurrentWhatsAppNumberData, DeleteCurrentWhatsAppNumberErrors, DeleteCurrentWhatsAppNumberResponses, DeleteWhatsAppTemplateData, DeleteWhatsAppTemplateErrors, DeleteWhatsAppTemplateResponses, DisconnectCurrentWhatsAppNumberData, DisconnectCurrentWhatsAppNumberErrors, DisconnectCurrentWhatsAppNumberResponses, GetAssistantContactFilterData, GetAssistantContactFilterErrors, GetAssistantContactFilterResponses, GetChatPauseStatusData, GetChatPauseStatusErrors, GetChatPauseStatusResponses, GetContactData, GetContactErrors, GetContactResponses, GetCurrentBusinessChatMessageDetailsData, GetCurrentBusinessChatMessageDetailsErrors, GetCurrentBusinessChatMessageDetailsResponses, GetCurrentBusinessData, GetCurrentBusinessErrors, GetCurrentBusinessHoursData, GetCurrentBusinessHoursErrors, GetCurrentBusinessHoursResponses, GetCurrentBusinessResponses, GetCurrentWhatsAppBusinessAccountInfoData, GetCurrentWhatsAppBusinessAccountInfoErrors, GetCurrentWhatsAppBusinessAccountInfoResponses, GetCurrentWhatsAppNumberLiveStatusData, GetCurrentWhatsAppNumberLiveStatusErrors, GetCurrentWhatsAppNumberLiveStatusResponses, GetCurrentWhatsAppNumberRegistrationTaskData, GetCurrentWhatsAppNumberRegistrationTaskErrors, GetCurrentWhatsAppNumberRegistrationTaskResponses, GetTransmissionData, GetTransmissionErrors, GetTransmissionResponses, GetWhatsAppTemplateData, GetWhatsAppTemplateErrors, GetWhatsAppTemplateResponses, ImportContactsData, ImportContactsErrors, ImportContactsResponses, IntrospectTokenData, IntrospectTokenErrors, IntrospectTokenResponses, ListApiTokensData, ListApiTokensErrors, ListApiTokensResponses, ListBusinessLibraryDocumentsData, ListBusinessLibraryDocumentsErrors, ListBusinessLibraryDocumentsResponses, ListBusinessLibraryImagesData, ListBusinessLibraryImagesErrors, ListBusinessLibraryImagesResponses, ListBusinessLibraryStickersData, ListBusinessLibraryStickersErrors, ListBusinessLibraryStickersResponses, ListBusinessMenusData, ListBusinessMenusErrors, ListBusinessMenusResponses, ListChatMessagesData, ListChatMessagesErrors, ListChatMessagesResponses, ListContactsData, ListContactsErrors, ListContactsResponses, ListCurrentBusinessChatsData, ListCurrentBusinessChatsErrors, ListCurrentBusinessChatsResponses, ListCurrentWebhookEndpointsData, ListCurrentWebhookEndpointsErrors, ListCurrentWebhookEndpointsResponses, ListCurrentWhatsAppNumbersData, ListCurrentWhatsAppNumbersErrors, ListCurrentWhatsAppNumbersResponses, ListTransmissionsData, ListTransmissionsErrors, ListTransmissionsResponses, ListWhatsAppTemplatesData, ListWhatsAppTemplatesErrors, ListWhatsAppTemplatesResponses, MarkChatReadData, MarkChatReadErrors, MarkChatReadResponses, PauseChatAssistantData, PauseChatAssistantErrors, PauseChatAssistantResponses, PreviewTransmissionData, PreviewTransmissionErrors, PreviewTransmissionResponses, RegisterCurrentWhatsAppNumberData, RegisterCurrentWhatsAppNumberErrors, RegisterCurrentWhatsAppNumberResponses, ResendCurrentWebhookDeliveryData, ResendCurrentWebhookDeliveryErrors, ResendCurrentWebhookDeliveryResponses, ResumeChatAssistantData, ResumeChatAssistantErrors, ResumeChatAssistantResponses, RevokeApiTokenData, RevokeApiTokenErrors, RevokeApiTokenResponses, RotateCurrentWebhookSigningSecretData, RotateCurrentWebhookSigningSecretErrors, RotateCurrentWebhookSigningSecretResponses, SendChatMessageData, SendChatMessageErrors, SendChatMessageResponses, SendChatTemplateMessageData, SendChatTemplateMessageErrors, SendChatTemplateMessageResponses, SendCurrentWhatsAppCatalogData, SendCurrentWhatsAppCatalogErrors, SendCurrentWhatsAppCatalogResponses, SetAssistantContactFilterModeData, SetAssistantContactFilterModeErrors, SetAssistantContactFilterModeResponses, SetChatStatusData, SetChatStatusErrors, SetChatStatusResponses, SetCurrentWhatsAppNumberAssistantData, SetCurrentWhatsAppNumberAssistantErrors, SetCurrentWhatsAppNumberAssistantResponses, SnoozeChatData, SnoozeChatErrors, SnoozeChatResponses, StartTemplateConversationData, StartTemplateConversationErrors, StartTemplateConversationResponses, SubmitWhatsAppTemplateData, SubmitWhatsAppTemplateErrors, SubmitWhatsAppTemplateResponses, SyncWhatsAppTemplatesData, SyncWhatsAppTemplatesErrors, SyncWhatsAppTemplatesResponses, UpdateBusinessMenuData, UpdateBusinessMenuErrors, UpdateBusinessMenuResponses, UpdateContactData, UpdateContactErrors, UpdateContactResponses, UpdateCurrentBusinessData, UpdateCurrentBusinessErrors, UpdateCurrentBusinessHoursData, UpdateCurrentBusinessHoursErrors, UpdateCurrentBusinessHoursResponses, UpdateCurrentBusinessResponses, UpdateCurrentWebhookEndpointData, UpdateCurrentWebhookEndpointErrors, UpdateCurrentWebhookEndpointResponses, UpdateWhatsAppTemplateData, UpdateWhatsAppTemplateErrors, UpdateWhatsAppTemplateResponses, UploadBusinessLibraryDocumentData, UploadBusinessLibraryDocumentErrors, UploadBusinessLibraryDocumentResponses, UploadBusinessLibraryImageData, UploadBusinessLibraryImageErrors, UploadBusinessLibraryImageResponses, UploadBusinessLibraryStickerData, UploadBusinessLibraryStickerErrors, UploadBusinessLibraryStickerResponses, UploadChatAttachmentData, UploadChatAttachmentErrors, UploadChatAttachmentResponses } from './types.gen.js';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean, TResponse = unknown> = Options2<TData, ThrowOnError, TResponse> & {
     /**
@@ -296,6 +296,50 @@ export class IzapApi extends HeyApiClient {
     }
     
     /**
+     * List library stickers
+     *
+     * Returns the library stickers of the authenticated user's business, newest first, paged with `limit` and `offset`.
+     */
+    public listBusinessLibraryStickers<ThrowOnError extends boolean = true>(options?: Options<ListBusinessLibraryStickersData, ThrowOnError>): RequestResult<ListBusinessLibraryStickersResponses, ListBusinessLibraryStickersErrors, ThrowOnError> {
+        return (options?.client ?? this.client).get<ListBusinessLibraryStickersResponses, ListBusinessLibraryStickersErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/businesses/library/stickers',
+            ...options
+        });
+    }
+    
+    /**
+     * Upload a library sticker
+     *
+     * Uploads a WhatsApp sticker to the library of the authenticated user's business. It must be a 512x512 WebP of at most 100 KB, or 500 KB when animated. Stickers are kept apart from library images and are sent to customers as WhatsApp stickers, without a caption.
+     */
+    public uploadBusinessLibrarySticker<ThrowOnError extends boolean = true>(options: Options<UploadBusinessLibraryStickerData, ThrowOnError>): RequestResult<UploadBusinessLibraryStickerResponses, UploadBusinessLibraryStickerErrors, ThrowOnError> {
+        return (options.client ?? this.client).post<UploadBusinessLibraryStickerResponses, UploadBusinessLibraryStickerErrors, ThrowOnError>({
+            ...formDataBodySerializer,
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/businesses/library/stickers',
+            ...options,
+            headers: {
+                'Content-Type': null,
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Delete a library sticker
+     *
+     * Removes a sticker from the library. Copies already delivered on WhatsApp are unaffected, but the inbox can no longer show the sticker in earlier messages.
+     */
+    public deleteBusinessLibrarySticker<ThrowOnError extends boolean = true>(options: Options<DeleteBusinessLibraryStickerData, ThrowOnError>): RequestResult<DeleteBusinessLibraryStickerResponses, DeleteBusinessLibraryStickerErrors, ThrowOnError> {
+        return (options.client ?? this.client).delete<DeleteBusinessLibraryStickerResponses, DeleteBusinessLibraryStickerErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/businesses/library/stickers/{sticker_id}',
+            ...options
+        });
+    }
+    
+    /**
      * List the business menus
      *
      * Returns the product catalog menus published by the business named in the `business-id` header.
@@ -506,6 +550,23 @@ export class IzapApi extends HeyApiClient {
     }
     
     /**
+     * Start a conversation with a template
+     *
+     * Adds a contact by international phone number (E.164, leading `+`) and opens the conversation by sending an approved WhatsApp template. An existing contact with the same number is reused. Pass `whatsapp_number_id` when the business has more than one WhatsApp number. The business is taken from the `business-id` header.
+     */
+    public startTemplateConversation<ThrowOnError extends boolean = true>(options: Options<StartTemplateConversationData, ThrowOnError>): RequestResult<StartTemplateConversationResponses, StartTemplateConversationErrors, ThrowOnError> {
+        return (options.client ?? this.client).post<StartTemplateConversationResponses, StartTemplateConversationErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/chats/template-conversations',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
      * Delete a chat
      *
      * Deletes the conversation. Deleting one that is already deleted returns `410`.
@@ -681,6 +742,83 @@ export class IzapApi extends HeyApiClient {
             ...options,
             headers: {
                 'Content-Type': null,
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * List contacts
+     *
+     * Returns the contacts for the business in the `business-id` header. Use `search` to match by name, phone or email, `chatbot_id` to narrow the list to one assistant, and `page` / `page_size` to page through the result.
+     */
+    public listContacts<ThrowOnError extends boolean = true>(options?: Options<ListContactsData, ThrowOnError>): RequestResult<ListContactsResponses, ListContactsErrors, ThrowOnError> {
+        return (options?.client ?? this.client).get<ListContactsResponses, ListContactsErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/contacts',
+            ...options
+        });
+    }
+    
+    /**
+     * Create a contact
+     *
+     * Creates a contact for the business in the `business-id` header. The phone number is fixed after creation; use the update operation for the name, email, tags and notes.
+     */
+    public createContact<ThrowOnError extends boolean = true>(options: Options<CreateContactData, ThrowOnError>): RequestResult<CreateContactResponses, CreateContactErrors, ThrowOnError> {
+        return (options.client ?? this.client).post<CreateContactResponses, CreateContactErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/contacts',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Import contacts
+     *
+     * Creates or updates contacts from a list of rows for the business in the `business-id` header. Invalid rows are skipped and reported with their 0-based index in the `rows` array; valid rows are still applied.
+     */
+    public importContacts<ThrowOnError extends boolean = true>(options: Options<ImportContactsData, ThrowOnError>): RequestResult<ImportContactsResponses, ImportContactsErrors, ThrowOnError> {
+        return (options.client ?? this.client).post<ImportContactsResponses, ImportContactsErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/contacts/import',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+    }
+    
+    /**
+     * Retrieve a contact
+     *
+     * Returns one contact, including the conversations that belong to it. A contact from another business returns `404` rather than leaking that it exists.
+     */
+    public getContact<ThrowOnError extends boolean = true>(options: Options<GetContactData, ThrowOnError>): RequestResult<GetContactResponses, GetContactErrors, ThrowOnError> {
+        return (options.client ?? this.client).get<GetContactResponses, GetContactErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/contacts/{contact_id}',
+            ...options
+        });
+    }
+    
+    /**
+     * Update a contact
+     *
+     * Partially updates a contact's name, email, tags or notes. The phone number cannot be changed after the contact is created.
+     */
+    public updateContact<ThrowOnError extends boolean = true>(options: Options<UpdateContactData, ThrowOnError>): RequestResult<UpdateContactResponses, UpdateContactErrors, ThrowOnError> {
+        return (options.client ?? this.client).patch<UpdateContactResponses, UpdateContactErrors, ThrowOnError>({
+            security: [{ scheme: 'bearer', type: 'http' }],
+            url: '/api/v1/contacts/{contact_id}',
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
                 ...options.headers
             }
         });
